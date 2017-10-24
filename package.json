@@ -1,0 +1,21 @@
+{
+  "name": "tiaraudn",
+  "version": "0.1.0",
+  "description": "This is a random and useless domain name",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyrw/tiaraudn"
+  },
+  "main": "server.js",
+  "scripts": {
+    "start": "nodemon server.js"
+  },
+  "dependencies": {
+    "compression": "^1.7",
+    "express": "^4.15"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11"
+  }
+}
