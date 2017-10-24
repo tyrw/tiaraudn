@@ -1,8 +1,158 @@
-<html>
+<html itemscope itemtype="http://schema.org/Article">
 <head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name=viewport content="width=device-width, initial-scale=1">
 
+  <title>Tiaraudn A</title>
+  <meta name="description" content="This is a random and useless domain name. A">
+
+  <!-- Schema.org markup for Google+ -->
+  <meta itemprop="name" content="Tiaraudn A">
+  <meta itemprop="description" content="This is a random and useless domain name. A">
+  <meta itemprop="image" content="https://via.placeholder.com/350x150/7358d6/ffffff&text=A">
+
+  <!-- Twitter Card data -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@tiaraudn">
+  <meta name="twitter:title" content="Tiaraudn is A">
+  <meta name="twitter:description" content="This is a random and useless domain name. A">
+  <meta name="twitter:creator" content="@tiaraudn">
+  <!-- Twitter summary card with large image must be at least 280x150px -->
+  <meta name="twitter:image:src" content="https://via.placeholder.com/280x150/7358d6/ffffff&text=A">
+
+  <!-- Open Graph data -->
+  <meta property="og:title" content="Tiaraudn A" />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="http://www.tiaraudn-0.com/" />
+  <meta property="og:image" content="https://via.placeholder.com/350x150/7358d6/ffffff&text=A" />
+  <meta property="og:description" content="This is a random and useless domain name. A" />
+  <meta property="og:site_name" content="Tiaraudn A" />
+  <meta property="article:published_time" content="2017-10-24T00:00:00-07:00" />
+  <meta property="article:modified_time" content="2017-10-24T00:00:00-07:00" />
+  <meta property="article:section" content="Tiaraudn Section A" />
+  <meta property="article:tag" content="Tiaraudn Tag A" />
+
+  <!-- Learn more about tags & SEO at https://moz.com/blog/seo-meta-tags -->
+  <style>
+    body {
+      margin: 10px;
+    }
+    .left, .right {
+      display: inline-block;
+      width: 35%;
+    }
+  </style>
 </head>
 <body>
-  Index
+  <h1>This is a random and useless domain name.</h1>
+  <p>The purpose of this page is to see what effect various JavaScript actions may have on search engine results.</p>
+
+  <h2>There are ten main ways to get content onto a page</h2>
+  <ul>
+    <li>
+      Content rendered by server and already on the page at load
+      <ul>
+        <li>A. "Static" content</li>
+      </ul>
+    </li>
+    <li>
+      Content added by JavaScript already on the page at load
+      <br>
+      <ul>
+        <li>B. Content from the JavaScript itself</li>
+        <li>C. Content from an AJAX request to own domain</li>
+        <li>D. Content from an AJAX request to external domain</li>
+      </ul>
+    </li>
+    <li>
+      Content added by JavaScript from an external file hosted at the same domain
+      <ul>
+        <li>E. Content from the JavaScript file itself</li>
+        <li>F. Content from an AJAX request to own domain</li>
+        <li>G. Content from an AJAX request to external domain</li>
+      </ul>
+    </li>
+    <li>
+      Content added by JavaScript from an external file hosted at a different domain
+      <ul>
+        <li>H. Content from the JavaScript file itself</li>
+        <li>I. Content from an AJAX request to own domain</li>
+        <li>J. Content from an AJAX request to external domain</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>This page contains all ten ways to add content (A-J)</h2>
+  <p>As each option runs, its letter is added to the table and image below, as well as to the relevant &lt;title&gt; and &lt;meta&gt; tags in this document's &lt;head&gt;.</p>
+  <p>If a letter shows in a given search engine or service's results, it means that method was recorded by that search engine or service.</p>
+  <p>If a letter shows before another letter, it means that letter's method was executed first by the browser or crawler viewing the page.</p>
+
+  <h2>Results</h2>
+  <div>
+    <hr>
+    <div class="left"><strong>Method</strong></div>
+    <div class="right"><strong>Loaded?</strong></div>
+    <hr>
+    <div class="left">A</div>
+    <div class="right">Yes</div>
+    <div class="left">B</div>
+    <div id="table-B" class="right">No</div>
+    <div class="left">C</div>
+    <div id="table-C" class="right">No</div>
+    <div class="left">D</div>
+    <div id="table-D" class="right">No</div>
+    <div class="left">E</div>
+    <div id="table-E" class="right">No</div>
+    <div class="left">F</div>
+    <div id="table-F" class="right">No</div>
+    <div class="left">G</div>
+    <div id="table-G" class="right">No</div>
+    <div class="left">H</div>
+    <div id="table-H" class="right">No</div>
+    <div class="left">I</div>
+    <div id="table-I" class="right">No</div>
+    <div class="left">J</div>
+    <div id="table-J" class="right">No</div>
+
+    <hr>
+    <img id="image" src="https://via.placeholder.com/350x150/7358d6/ffffff&text=A" alt="Tiaraudn">
+  </div>
+
+  <h2>Other</h2>
+  <p>This page is intentionally designed to be a "low priority" site for testing purposes. It uses a poor domain name (ranking-wise) and, as of initial indexing, does not have any sites linking to it. Results will eventually be published in a blog post somewhere, which is probably how you found this page to begin with.</p>
+
+  <script>
+    /* B */
+    (function(letter, head) {
+      letter = letter.toUpperCase()  
+      // Update title tag
+      var title = head.getElementsByTagName('title')[0]
+      title.innerHTML = title.innerHTML + ' ' + letter
+      // Update meta tags
+      var metaTagsToIgnore = ['viewport', 'twitter:card', 'twitter:site', 'twitter:creator', 'og:type', 'og:url', 'article:published_time', 'article:modified_time']
+      ,   metaTags = head.getElementsByTagName('meta')
+      for (var i = 0; i < metaTags.length; i++) {
+        var metaTag   = metaTags[i]
+        ,   name      = metaTag.getAttribute('name')
+        ,   itemprop  = metaTag.getAttribute('itemprop')
+        ,   property  = metaTag.getAttribute('property')
+        if (metaTag.getAttribute('http-equiv')) continue
+        if (metaTagsToIgnore.indexOf(name) > -1) continue
+        if (metaTagsToIgnore.indexOf(property) > -1) continue
+        if ((name && name.indexOf('image') > -1) || (itemprop && itemprop.indexOf('image') > -1) || (property && property.indexOf('image') > -1)) {
+          metaTag.setAttribute('content', metaTag.getAttribute('content') + '+' + letter)
+        } else {
+          metaTag.setAttribute('content', metaTag.getAttribute('content') + ' ' + letter)
+        }
+      }
+      // Update table and image
+      document.getElementById('table-' + letter).innerHTML = 'Yes'
+      var img = document.getElementById('image')
+      img.setAttribute('src', img.getAttribute('src') + '+' + letter)
+
+    })('B', document.head)
+  </script>
+
+  <script src="/efg.js"></script>
 </body>
 </html>
