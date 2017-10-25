@@ -34,3 +34,7 @@ npm install
 npm start
 ```
 Visit `http://localhost:5000` in the browser.
+
+### License
+
+[MIT](https://opensource.org/licenses/MIT)
