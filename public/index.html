@@ -60,7 +60,7 @@
       <br>
       <ul>
         <li>B. Content from the JavaScript itself</li>
-        <li>C. Content from an AJAX request to own domain</li>
+        <li>C. Content from an AJAX request to same domain</li>
         <li>D. Content from an AJAX request to external domain</li>
       </ul>
     </li>
@@ -68,7 +68,7 @@
       Content added by JavaScript from an external file hosted at the same domain
       <ul>
         <li>E. Content from the JavaScript file itself</li>
-        <li>F. Content from an AJAX request to own domain</li>
+        <li>F. Content from an AJAX request to same domain</li>
         <li>G. Content from an AJAX request to external domain</li>
       </ul>
     </li>
@@ -76,7 +76,7 @@
       Content added by JavaScript from an external file hosted at a different domain
       <ul>
         <li>H. Content from the JavaScript file itself</li>
-        <li>I. Content from an AJAX request to own domain</li>
+        <li>I. Content from an AJAX request to same domain</li>
         <li>J. Content from an AJAX request to external domain</li>
       </ul>
     </li>
@@ -119,40 +119,78 @@
   </div>
 
   <h2>Other</h2>
-  <p>This page is intentionally designed to be a "low priority" site for testing purposes. It uses a poor domain name (ranking-wise) and, as of initial indexing, does not have any sites linking to it. Results will eventually be published in a blog post somewhere, which is probably how you found this page to begin with.</p>
+  <p>This page is intentionally designed to be a "low priority" site for web crawlers. It uses a poor domain name (ranking-wise) and, as of initial indexing, does not have any sites linking to it. Results will eventually be published in a blog post somewhere, which is probably how you found this page to begin with.</p>
+  <p>In keeping with the theme of not having this page linked externally, you can find the code for this project by searching on GitHub for "tiaraudn".</p>
 
   <script>
-    /* B */
-    (function(letter, head) {
-      letter = letter.toUpperCase()  
-      // Update title tag
-      var title = head.getElementsByTagName('title')[0]
-      title.innerHTML = title.innerHTML + ' ' + letter
-      // Update meta tags
-      var metaTagsToIgnore = ['viewport', 'twitter:card', 'twitter:site', 'twitter:creator', 'og:type', 'og:url', 'article:published_time', 'article:modified_time']
-      ,   metaTags = head.getElementsByTagName('meta')
-      for (var i = 0; i < metaTags.length; i++) {
-        var metaTag   = metaTags[i]
-        ,   name      = metaTag.getAttribute('name')
-        ,   itemprop  = metaTag.getAttribute('itemprop')
-        ,   property  = metaTag.getAttribute('property')
-        if (metaTag.getAttribute('http-equiv')) continue
-        if (metaTagsToIgnore.indexOf(name) > -1) continue
-        if (metaTagsToIgnore.indexOf(property) > -1) continue
-        if ((name && name.indexOf('image') > -1) || (itemprop && itemprop.indexOf('image') > -1) || (property && property.indexOf('image') > -1)) {
-          metaTag.setAttribute('content', metaTag.getAttribute('content') + '+' + letter)
-        } else {
-          metaTag.setAttribute('content', metaTag.getAttribute('content') + ' ' + letter)
-        }
-      }
-      // Update table and image
-      document.getElementById('table-' + letter).innerHTML = 'Yes'
-      var img = document.getElementById('image')
-      img.setAttribute('src', img.getAttribute('src') + '+' + letter)
+    (function() {
 
-    })('B', document.head)
+      /* Letter placement function */
+      function addLetterToPage (letter) {
+        letter = letter.toUpperCase()  
+        // Update title tag
+        var title = document.head.getElementsByTagName('title')[0]
+        title.innerHTML = title.innerHTML + ' ' + letter
+        // Update meta tags
+        var metaTagsToIgnore = ['viewport', 'twitter:card', 'twitter:site', 'twitter:creator', 'og:type', 'og:url', 'article:published_time', 'article:modified_time']
+        ,   metaTags = document.head.getElementsByTagName('meta')
+        for (var i = 0; i < metaTags.length; i++) {
+          var metaTag   = metaTags[i]
+          ,   name      = metaTag.getAttribute('name')
+          ,   itemprop  = metaTag.getAttribute('itemprop')
+          ,   property  = metaTag.getAttribute('property')
+          if (metaTag.getAttribute('http-equiv')) continue
+          if (metaTagsToIgnore.indexOf(name) > -1) continue
+          if (metaTagsToIgnore.indexOf(property) > -1) continue
+          if ((name && name.indexOf('image') > -1) || (itemprop && itemprop.indexOf('image') > -1) || (property && property.indexOf('image') > -1)) {
+            metaTag.setAttribute('content', metaTag.getAttribute('content') + '+' + letter)
+          } else {
+            metaTag.setAttribute('content', metaTag.getAttribute('content') + ' ' + letter)
+          }
+        }
+        // Update table and image
+        document.getElementById('table-' + letter).innerHTML = 'Yes'
+        var img = document.getElementById('image')
+        img.setAttribute('src', img.getAttribute('src') + '+' + letter)
+      }
+
+      /* AJAX request function */
+      function fetchAndPlaceLetter (url) {
+        var xmlhttp = new XMLHttpRequest()
+
+        xmlhttp.onreadystatechange = function() {
+          if (xmlhttp.readyState == XMLHttpRequest.DONE) {   // XMLHttpRequest.DONE == 4
+            if (xmlhttp.status == 200) {
+              var res = JSON.parse(xmlhttp.responseText)
+              if (res && res.letter) return addLetterToPage(res.letter)
+              return console.warn('No letter returned with 200 response', res)
+            }
+            if (xmlhttp.status == 400) return console.warn('Problem with request to ' + url)
+            console.warn('Non-200 response for ' + url)
+          }
+        }
+
+        xmlhttp.open('GET', url, true)
+        xmlhttp.send()
+      }
+
+      /* B */
+      addLetterToPage('B')
+
+      /* C */
+      fetchAndPlaceLetter('/data/C')
+
+      /* D */
+      fetchAndPlaceLetter('https://api.component.io/v0/letter/D')
+    
+    })();
   </script>
 
+  <!-- EFG -->
   <script src="/efg.js"></script>
+
+  <!-- HIJ -->
+  <script src="https://cdn.component.io/letter/hij.js"></script>
+
 </body>
 </html>
