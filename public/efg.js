@@ -2,10 +2,13 @@
 
   /* Letter placement function */
   function addLetterToPage (letter) {
-    letter = letter.toUpperCase()  
+    letter = letter.toUpperCase()
     // Update title tag
     var title = document.head.getElementsByTagName('title')[0]
     title.innerHTML = title.innerHTML + ' ' + letter
+    // Update h1 tag
+    var h1 = document.getElementsByTagName('h1')[0]
+    h1.innerHTML = h1.innerHTML + ' ' + letter
     // Update meta tags
     var metaTagsToIgnore = ['viewport', 'twitter:card', 'twitter:site', 'twitter:creator', 'og:type', 'og:url', 'article:published_time', 'article:modified_time']
     ,   metaTags = document.head.getElementsByTagName('meta')
