@@ -59,6 +59,6 @@
   fetchAndPlaceLetter('/data/I')
 
   /* J */
-  fetchAndPlaceLetter('https://api.component.io/v0/letter/J')
+  fetchAndPlaceLetter('https://api.anymod.com/v0/letter/J')
 
 })();
